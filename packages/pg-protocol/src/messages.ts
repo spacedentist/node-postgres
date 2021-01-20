@@ -11,6 +11,7 @@ export const enum MessageName {
   copyDone = 'copyDone',
   copyData = 'copyData',
   rowDescription = 'rowDescription',
+  parameterDescription = 'parameterDescription',
   parameterStatus = 'parameterStatus',
   backendKeyData = 'backendKeyData',
   notification = 'notification',
@@ -150,6 +151,14 @@ export class RowDescriptionMessage {
   public readonly fields: Field[]
   constructor(public readonly length: number, public readonly fieldCount: number) {
     this.fields = new Array(this.fieldCount)
+  }
+}
+
+export class ParameterDescriptionMessage {
+  public readonly name: MessageName = MessageName.parameterDescription
+  public readonly dataTypeIDs: number[]
+  constructor(public readonly length: number, public readonly parameterCount: number) {
+    this.dataTypeIDs = new Array(this.parameterCount)
   }
 }
 
